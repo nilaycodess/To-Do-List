@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="toDo.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <title>To Do App</title>
+    <script>
+        $(document).ready(function() {
+    function updateToDoHeight() {
+        var toDoDiv = $("#toDo div");
+        // yüksekliği sıfırla ve otomatik olarak genişliği ayarla
+        toDoDiv.css({ height: "auto", width: "auto" });
+        var newHeight = toDoDiv.height();
+        // div'in yüksekliğine negatif boşluk ekle
+        toDoDiv.css("height", newHeight - 20); 
+    }
+
+    function addCheckboxListeners() {
+        // Tüm checkbox'ları seç
+        $(".checkbox").change(function() {
+            var textInput = $(this).next(".text");
+
+            if (this.checked) {
+                textInput.css("text-decoration", "line-through");
+            } else {
+                textInput.css("text-decoration", "none");
+            }
+        });
+    }
+
+    $("#add").click(function() {
+        // yeni checkbox ve input elemanlarını oluştur
+        var newCheckbox = $("<input type='checkbox' class='checkbox' name='c1'>");
+        var newInput = $("<input type='text' class='text' name='t1'><br>");
+
+        // oluşturulan elemanları #toDo div içine ekle
+        $("#toDo div:last").append(newCheckbox);
+        $("#toDo div:last").append(newInput);
+
+        // ToDo div'inin yüksekliğini güncelle
+        updateToDoHeight();
+
+        // Yeni checkbox'lar için olay dinleyicilerini ekle
+        addCheckboxListeners();
+    });
+
+    // Sil butonuna tıklandığında
+    $("#delete").click(function() {
+        // En alttaki checkbox ile yanındaki input elemanlarını sil
+        $("#toDo input[type='checkbox']:last").next("input").addBack().remove();
+
+        // ToDo div'inin yüksekliğini güncelle
+        updateToDoHeight();
+    });
+
+    // Sayfa yüklendiğinde mevcut checkbox'lar için olay dinleyicilerini ekle
+    addCheckboxListeners();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    createSnowflakes();
+});
+
+function createSnowflakes() {
+    const snowflakesContainer = document.querySelector('.snowflakes');
+
+    for (let i = 0; i < 120; i++) {  // 120 kar tanesi
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        snowflake.innerHTML = '۰';
+        snowflake.style.left = Math.random() * window.innerWidth + 'px';
+        snowflake.style.animationDuration = (Math.random() * 5 + 2) + 's';  // kar tanesinin düşme hızı
+        snowflakesContainer.appendChild(snowflake);
+    }
+}
+
+// JavaScript ile işlevselliği eklemek için
+document.addEventListener('DOMContentLoaded', function () {
+    const checkbox = document.getElementById('c1');
+    const textInput = document.getElementById('t1');
+   
+
+
+    checkbox.addEventListener('change', function () {
+        if (this.checked) {
+            textInput.style.textDecoration = 'line-through';
+        } else {
+            textInput.style.textDecoration = 'none';
+        }
+    });
+});
+
+    </script>
+</head>
+<body>
+    <header>
+        <h1>To Make Your Life Better</h1>
+    </header>
+    
+    <nav>
+        <a href="#toDo">Today</a>
+        
+        
+    </nav>
+
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">۰</div>
+        
+    </div>
+
+    <div id="toDo">
+
+        <input type="date" id="date">
+        <button id="add">Add</button>
+        <button id="delete">Delete</button>
+        
+        
+        <div>
+            <input type="checkbox" class="checkbox" name="c1">
+            <input type="text" class="text" name="t1"> <br>
+            <input type="checkbox" class="checkbox" name="c1"> 
+            <input type="text" class="text" name="t1"> <br>
+            <input type="checkbox" class="checkbox" name="c1"> 
+            <input type="text" class="text" name="t1"> <br>
+            <input type="checkbox" class="checkbox" name="c1"> 
+            <input type="text" class="text" name="t1"> <br>
+        </div>
+    </div>
+
+</body>
+</html>

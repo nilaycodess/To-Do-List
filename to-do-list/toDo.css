@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('img2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity:0.8;
+    filter: alpha(opacity=70);
+}
+
+.snowflakes {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.snowflake {
+    position: absolute;
+    color: #fff;
+    background-color: transparent;
+    user-select: none;
+    transform-origin: 0 0;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+header {
+    padding: 2% 0;
+    background-color: rgba(82, 45, 95, 0.8);
+    text-align: center;
+    width: 100%;
+    top: 0;
+}
+
+header h1 {
+    color: white;
+    font-size: 17px;
+    font-style:italic;
+}
+
+nav {
+    background-color: rgba(138, 156, 157, 0.8);
+    display: flex;
+    justify-content: center;
+    padding: 1.7% 0;
+    width: 100%;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    margin: 0 35px; /* Sağ ve sol boşlukları ayarla */
+    font-size: 1.6vw;
+    font-style: italic;
+}
+
+nav a:hover {
+    color: white;
+}
+
+#toDo {
+    margin: 20px auto; /* Otomatik sol ve sağ kenar boşluğunu artırır, böylece div sayfanın ortasında olur */
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background-color: #fdf7f793;
+    max-width: 500px; /* Maksimum genişlik belirleyerek içeriği daraltır */
+    width: 90%; /* Genişliği sayfanın %90'ı kadar olacak şekilde ayarlar */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* İçerikleri dikey olarak hizalamak için */
+}
+
+#toDo div {
+    margin-bottom: 8px;
+    border-radius: 20px;
+    border-color: black;
+    height: 120px;
+    margin-top: 5px;
+    overflow-y: auto; /* İçerik aşırı uzunsa dikey kaydırma çubuğunu gösterir */
+}
+
+#toDo input[type="date"] {
+    background-color: rgba(251, 250, 250, 0.881); /* İstediğiniz arkaplan rengini buraya ekleyin */
+}
+
+#toDo input[type="text"] {
+    background-color: rgba(251, 250, 250, 0.77); /* İstediğiniz arkaplan rengini buraya ekleyin */
+    border-radius: 2px;
+    line-height: 15px;
+
+}
+
+
+
+button {
+    padding: 6px;
+    font-size: 16px;
+    background-color: #010101;
+    color: #fff1f1;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background-color 1.01s, color 1.01s; /* Geçiş efekti tanımlıyoruz */
+    
+}
+
+button:hover{
+    background-color: #fd4570df;
+    color: #000; /* Mouse üzerine gelindiğinde metin rengini değiştiriyoruz */
+}
+
+
+
+
+#toDo input[type="checkbox"]:checked {
+    /* Buraya istediğiniz renk değerini ekleyin */
+    background-color: rgb(123, 221, 228); /* Örneğin kırmızı bir renk */
+    
+}
+
